@@ -62,6 +62,15 @@ export async function deleteHotelHandler(req: Request, res: Response, next: Next
 
 export async function updateHotelHandler(req: Request, res: Response, next: NextFunction) {
 
-    res.status(StatusCodes.NOT_IMPLEMENTED);
+    // 1. Call the service layer
+    const updatedHotel = await updateHotelService(Number(req.params.id), req.body);
+
+    // 2. Send the response
+
+    res.status(StatusCodes.OK).json({
+        message: "Hotel updated successfully",
+        data: updatedHotel,
+        success: true,
+    })
 
 }

@@ -27,7 +27,7 @@ export class HotelRepository extends BaseRepository<Hotel> {
     async softDelete(id: number) {
         const hotel = await Hotel.findByPk(id);
 
-        if(!hotel) {
+        if (!hotel) {
             logger.error(`Hotel not found: ${id}`);
             throw new NotFoundError(`Hotel with id ${id} not found`);
         }
